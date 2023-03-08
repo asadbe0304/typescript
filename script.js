@@ -28,7 +28,13 @@ number.map((num) => {
     console.log(num);
 });
 const logCar = (car) => {
-    return `name of car - ${car.name}, ${car.year} `;
+    return `name of car - ${car.name}, `;
 };
-console.log(logCar({ name: "BMQ" }));
-console.log("sma");
+const logBmw = (data) => {
+    console.log(data.extra);
+};
+console.log(logCar({ name: "BMW" }));
+function logPoint(point) {
+    const d3 = point;
+}
+const canvas = document.getElementById("canvas");

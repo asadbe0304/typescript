@@ -34,9 +34,39 @@ number.map((num: number) => {
   console.log(num);
 });
 
-const logCar = (car: { name: string; year?: number }):string => {
+// type Cartype = {
+//   name: string;
+//   year?: string;
+// };
+
+interface Icar {
+  name: string;
+  year?: string;
+}
+interface IBM extends Icar {
+  colors: string;
+  extra: boolean;
+}
+
+const logCar = (car: Icar): string => {
   return `name of car - ${car.name}, `;
 };
+const logBmw = (data: IBM): void => {
+  console.log(data.extra);
+};
 
-console.log(logCar({ name: "BMQ"}));
-console.log("sma");
+console.log(logCar({ name: "BMW" }));
+
+interface Ipoint {
+  x: number;
+  y: number;
+}
+interface I3dpoint extends Ipoint {
+  z: number;
+}
+
+function logPoint(point: Ipoint): void {
+  const d3: I3dpoint = point as I3dpoint;
+}
+
+const canvas = document.getElementById("canvas") as HTMLCanvasElement;

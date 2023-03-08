@@ -1,0 +1,14 @@
+{
+  "name": "BMW",
+  "color": "Red",
+  "isBallon": false,
+  "speed": {
+    "max": 330,
+    "min": 100
+  },
+  "price": {
+    "total": 20.0,
+    "credit": true,
+    "discount": 10
+  }
+}
