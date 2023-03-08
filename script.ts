@@ -1,72 +1,125 @@
-const firstName: string = "Asadbek";
+// literal type
 
-const boolean: boolean = true;
+let car: "mers" = "mers";
+// let icar : "mers" = "bmw"  mumkin emas faqat mers bo'lshi kerak
 
-console.log(boolean);
-//array
-const colors: string[] = ["red", "blue"];
-const nums: number[] = [1, 2, 3, 4];
+type action = "show" | "hide";
 
-//any
+const div = document.getElementById("div") as HTMLDivElement;
 
-let summ: any = 1;
-summ = "w";
+type actionType = "show" | "hide";
 
-// function
-//void function dan hech qanday malumot qaytmaydi
-function logger(a: number): string {
-  return `${a + 2}`;
-}
-
-//number yoki string qaytarish
-function loggers(a: number | string) {
-  if (typeof a === "number") {
-    return a.toFixed();
-  } else if (typeof a === "string") {
-    return a.toLowerCase();
+function logg(action: actionType): boolean {
+  switch (action) {
+    case "hide":
+      return false;
+    case "show":
+      return true;
   }
 }
 
-console.log(logger(2));
+// ENUM  bu bir const dir
 
-const number: number[] = [1, 2, 3, 4, 5, 6];
-number.map((num: number) => {
-  console.log(num);
-});
+enum Dictionary {
+  rus,
+  uzb,
+  eng,
+}
 
-// type Cartype = {
-//   name: string;
-//   year?: string;
-// };
+// enum string turi
 
+enum Dict {
+  rus = "rus",
+  eng = "Uzb",
+}
+enum Dictc {
+  rus = 0,
+  eng,
+}
+
+enum Desc {
+  yes = 1,
+  no = "no",
+}
+
+const runEnum = (): number => {
+  return 2;
+};
+
+enum Descision {
+  yes = 1,
+  no = runEnum(),
+}
+
+// const uzb = Dictionary.uzb;
+// console.log(uzb);
+const uzbIndex = Dictionary.uzb;
+const uzb = Dictionary[uzbIndex];
+console.log(uzb);
+
+enum Numbers {
+  One,
+  Two,
+  Three,
+  Four,
+}
+
+function getUzbNumber(number: Numbers) {
+  switch (number) {
+    case Numbers.One:
+      return "Bir";
+    case Numbers.Two:
+      return "Ikki";
+    case Numbers.Three:
+      return "Uch";
+    case Numbers.Four:
+      return "To'rt";
+    default:
+      const a: never = number;
+  }
+}
+
+// tuples = array
+
+// const array: [number, number, string, boolean] = [1, 3, "ster",false];
+
+// array.push(4);
+// array[3]
+
+// const [a,...rest] = array;
+
+// generics
 interface Icar {
   name: string;
-  year?: string;
-}
-interface IBM extends Icar {
-  colors: string;
-  extra: boolean;
+  year: string;
+  onSpeed: <T, G, I>(data: T) => G;
 }
 
-const logCar = (car: Icar): string => {
-  return `name of car - ${car.name}, `;
+function loggerTime<T>(data: T): T {
+  // console.log(new Date());
+  // return number;
+  if (typeof data === "string") {
+    data.toLowerCase();
+  } else if (typeof data === "number") {
+    data.toFixed();
+  }
+
+  return data;
+}
+// function logerDate(number: number): number {
+// console.log(new Date());
+// return number;
+// }
+
+const cars = {
+  name: "bmw",
+  color: "Black",
 };
-const logBmw = (data: IBM): void => {
-  console.log(data.extra);
-};
 
-console.log(logCar({ name: "BMW" }));
+// const myCar = loggerTime<Icar>(cars);
 
-interface Ipoint {
-  x: number;
-  y: number;
-}
-interface I3dpoint extends Ipoint {
-  z: number;
-}
+// loggerTime<number>(9);
 
-function logPoint(point: Ipoint): void {
-  const d3: I3dpoint = point as I3dpoint;
-}
+// loggerTime<string>("asad");
 
-const canvas = document.getElementById("canvas") as HTMLCanvasElement;
+// generic class
